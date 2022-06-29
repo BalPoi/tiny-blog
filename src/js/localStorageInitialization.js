@@ -1,16 +1,18 @@
 const initUsers = () => {
-  window.localStorage.setItem('users', JSON.stringify(users));
+  localStorage.setItem('users', JSON.stringify(users));
   console.log('Users: ', users);
 }
 const initCurrUser = () => {
-  window.localStorage.setItem('currUser', JSON.stringify(currUser));
+  localStorage.setItem('currUser', JSON.stringify(currUser));
   console.log('Current: ', currUser);
 }
+const initRemembering = flag => localStorage.setItem('isUserRemembered', JSON.stringify(flag));
+
 let users = [
-  {login: 'pavel', password: '1234'},
-  {login: 'igar', password: 'igar'},
-  {login: 'admin', password: 'adminpassword'},
-  {login: 'user', password: 'userpassword'},
+  {username: 'pavel', password: '1234'},
+  {username: 'igar', password: 'igar'},
+  {username: 'admin', password: 'adminpassword'},
+  {username: 'user', password: 'userpassword'},
 ];
 
-let currUser = {login: 'pavel', password: '1234'};
+let currUser = {username: 'pavel', password: '1234'};
