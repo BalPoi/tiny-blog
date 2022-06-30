@@ -58,6 +58,6 @@ export const signout = () => {
 
 export function isUserAuthenticated(username, password) {
   // console.log(username, password);
-  return !!JSON.parse(localStorage.getItem('users'))
+  return !!(JSON.parse(localStorage.getItem('users')) || [])
     .find(user => user.username === username && user.password === password);
 }

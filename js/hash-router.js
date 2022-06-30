@@ -5,23 +5,23 @@ const pageTitle = 'Tiny Blog';
 // create an object that maps the url to the template, title, and description
 const routes = {
   404: {
-    template: '/pages/404.html',
+    template: '../pages/404.html',
     style: '',
     title: '404 | ' + pageTitle,
   },
   '/': {
-    template: '/pages/index.html',
-    style: '/pages/index.css',
+    template: '../pages/index.html',
+    style: '../pages/index.css',
     title: pageTitle,
   },
   login: {
-    template: '/pages/login.html',
-    style: '/pages/login.css',
+    template: '../pages/login.html',
+    style: '../pages/login.css',
     title: 'Log in | ' + pageTitle,
   },
   feed: {
-    template: '/pages/feed.html',
-    style: '/pages/feed.css',
+    template: '../pages/feed.html',
+    style: '../pages/feed.css',
     title: 'Feed | ' + pageTitle,
   },
 };
