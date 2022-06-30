@@ -1,3 +1,5 @@
+import { feedInit } from "./feed.js";
+
 class Login {
   constructor(form, fields) {
     this.form = form;
@@ -6,7 +8,6 @@ class Login {
   }
 
   validateonSubmit() {
-    console.log('validationInit');
     this.form.addEventListener('submit', (e) => {
       e.preventDefault();
       const currUser = JSON.parse(localStorage.getItem('currUser')) || {};
@@ -36,8 +37,8 @@ window.addEventListener('hashchange', () => {
   //FIXME: crutch. w/o timeout getElement returns null value
   if (location.hash === '#login') setTimeout(loginInit, 100);
   if (location.hash === '#feed') setTimeout(feedInit, 100);
-  console.log(location.hash);
 });
+
 
 const loginInit = () => {
   const form = document.getElementById('authForm');
@@ -47,16 +48,10 @@ const loginInit = () => {
     const validator = new Login(form, fields);
   }
 }
+//FIXME
+setTimeout(loginInit, 100);
 
-const feedInit = () => {
-  const singoutButton = document.getElementById('signoutButton');
-  // console.log(singoutButton);
-  if (singoutButton) {
-    singoutButton.addEventListener('click', signout)
-  }
-}
-
-const signout = () => {
+export const signout = () => {
   localStorage.removeItem('currUser');
   location.hash = '#login';
 }

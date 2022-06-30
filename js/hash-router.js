@@ -28,6 +28,7 @@ const routes = {
 
 // create a function that watches the url and calls the urlLocationHandler
 const locationHandler = async () => {
+  console.log('Redirect to', window.location.hash);
   // get the url path, replace hash with empty string
   var location = window.location.hash.replace('#', '');
   // if the path length is 0, set it to primary page route
