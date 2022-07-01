@@ -16,7 +16,7 @@ const users = [
 
 const currUser = {username: 'pavel', password: '1234'};
 
-const posts = [
+export const posts = [
   {
     id: 0,
     username: "admin",
@@ -73,4 +73,4 @@ const posts = [
 // };
 
 initUsers();
-// initPosts();
+initPosts();

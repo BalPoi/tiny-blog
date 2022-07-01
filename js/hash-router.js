@@ -2,7 +2,6 @@ import { autoroute } from "./autorouting.js";
 
 
 const pageTitle = 'Tiny Blog';
-// create an object that maps the url to the template, title, and description
 const routes = {
   404: {
     template: '../pages/404.html',

@@ -1,3 +1,4 @@
+import { posts } from "./localStorageInitialization.js";
 import { isUserAuthenticated, signout } from "./login.js";
 
 export const feedInit = () => {
@@ -6,6 +7,7 @@ export const feedInit = () => {
   // console.log(posts);
   const currUser = JSON.parse(localStorage.getItem('currUser'));
 
+  document.querySelector('#currUsername').innerHTML = currUser.username;
   const signoutButton = document.getElementById('signoutButton');
   // console.log(signoutButton);
   if (signoutButton) {
@@ -16,7 +18,7 @@ export const feedInit = () => {
   // const postTemplate = await fetch('/components/post.html').then((response) => response.text());
   posts.forEach(post => {
     const html =
-    `<div class="card post" data-post-id="${post.id}">
+    `<div class="card post mb-1" data-post-id="${post.id}">
     <div class="card-body">
       <div class="d-flex justify-content-between">
         <h5 class="card-title">${post.title}</h5>
@@ -44,10 +46,14 @@ export const feedInit = () => {
   </div>`
   main.innerHTML += html;
   });
+
   const deleteBtns = document.querySelectorAll('.delete_post_btn');
   // console.log(deleteBtns);
   deleteBtns.forEach(btn => btn.addEventListener('click', deletePost));
   // deleteBtns.forEach(btn => console.log(btn));
+
+  const newPostForm = document.querySelector('#newPostForm');
+  newPostForm.addEventListener('submit', addPost)
 }
 
 const deletePost = (e) => {
@@ -59,4 +65,23 @@ const deletePost = (e) => {
   document.querySelectorAll('.post').forEach(post => {
     if (post.dataset.postId == id) post.remove();
   })
+}
+
+const addPost = (e) => {
+  e.preventDefault();
+  const posts = JSON.parse(localStorage.getItem('posts')) || [];
+  const newPost = {
+    id: posts.length,
+    username: JSON.parse(localStorage.getItem('currUser')).username,
+    date: new Date(),
+    title: e.srcElement.newPostTitle.value,
+    tags: e.srcElement.newPostTags.value.split(/,\s*/g),
+    content: e.srcElement.newPostContent.value
+  }
+  // console.log(newPost);
+  posts.push(newPost);
+  // console.log(posts);
+  localStorage.setItem('posts', JSON.stringify(posts));
+  feedInit()
+  bootstrap.Modal.getInstance(document.querySelector('#newPostModal')).hide();
 }
