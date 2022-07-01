@@ -38,6 +38,11 @@ window.addEventListener('hashchange', () => {
   if (location.hash === '#login') setTimeout(loginInit, 100);
   if (location.hash === '#feed') setTimeout(feedInit, 100);
 });
+window.addEventListener('load', () => {
+  //FIXME: crutch. w/o timeout getElement returns null value
+  if (location.hash === '#login') setTimeout(loginInit, 100);
+  if (location.hash === '#feed') setTimeout(feedInit, 100);
+});
 
 
 const loginInit = () => {

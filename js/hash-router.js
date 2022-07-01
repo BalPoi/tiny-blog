@@ -10,8 +10,8 @@ const routes = {
     title: '404 | ' + pageTitle,
   },
   '/': {
-    template: '../pages/index.html',
-    style: '../pages/index.css',
+    template: '../pages/menu.html',
+    style: '../pages/menu.css',
     title: pageTitle,
   },
   login: {

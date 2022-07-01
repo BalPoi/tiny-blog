@@ -7,7 +7,7 @@ export const autoroute = () => {
 
   // console.log('isAuthenticated:',isAuthenticated,'currUser:', currUser);
 
-  if (!currUser && !isUserRemembered) {
+  if (!currUser) {
     location.hash = '#login';
   } else if (isAuthenticated) {
     location.hash = '#feed';
