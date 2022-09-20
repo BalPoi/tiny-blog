@@ -3,6 +3,10 @@
     <img class="mb-4" src="/assets/tiny_icon.ico" alt="" width="75" />
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
+    <div id="loginAlert" class="alert alert-danger" role="alert" style="display: none;">
+      The username or password is incorrect. Try again.
+    </div>
+
     <div class="form-floating">
       <input type="text" class="form-control" id="username" autocomplete="username" placeholder="username" required />
       <label for="username">Username</label>
@@ -12,9 +16,6 @@
       <label for="password">Password</label>
     </div>
 
-    <!-- <div class="checkbox mb-3">
-      <label> <input type="checkbox" value="remember-me" /> Remember me </label>
-    </div> -->
     <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
   </form>
 </main>

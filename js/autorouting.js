@@ -2,10 +2,7 @@ import { isUserAuthenticated } from "./login.js";
 
 export const autoroute = () => {
   const currUser = JSON.parse(localStorage.getItem('currUser')) || {};
-  const isUserRemembered = JSON.parse(localStorage.getItem('isUserRemembered')) || {};
   const isAuthenticated = isUserAuthenticated(currUser.username, currUser.password);
-
-  // console.log('isAuthenticated:',isAuthenticated,'currUser:', currUser);
 
   if (!currUser) {
     location.hash = '#login';

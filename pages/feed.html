@@ -37,6 +37,29 @@
       </div>
     </div>
   </div>
+  <div class="modal fade modal-xl" id="editPostModal" data-bs-backdrop="static" aria-labelledby="editPostModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editPostModalLabel">Edit post</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="editPostForm">
+              <div class="mb-2">
+                  <input type="text" name="Title" id="editPostTitle" class="form-control form-control-lg mb-2" placeholder="Title" required>
+                  <textarea type="text" name="Content" id="editPostContent" class="form-control mb-2" placeholder="" rows="20" required></textarea>
+                  <input type="text" name="Tags" id="editPostTags" class="form-control form-control-sm " placeholder="tag1, tag2, tag3" required>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" id="publishPost">Save</button>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
   <main id="posts" class="flex-fill"></main>
   <footer class="d-flex flex-wrap align-items-center justify-content-center border-top " style="height: 100px;">
     <a href="https://github.com/BalPoi/tiny-blog" style="text-decoration: none;">

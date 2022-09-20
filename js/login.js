@@ -6,29 +6,21 @@ class Login {
     this.fields = fields;
     this.validateonSubmit();
   }
-
   validateonSubmit() {
     this.form.addEventListener('submit', (e) => {
       e.preventDefault();
       const currUser = JSON.parse(localStorage.getItem('currUser')) || {};
-      // const users = JSON.parse(localStorage.getItem('users'));
-      const signinUsername = this.form.username.value;
+      const signinUsername = this.form.username.value.toLowerCase();
       const signinPassword = this.form.password.value;
-      // console.log(isUserAuthenticated(signinUsername, signinPassword));
       if (isUserAuthenticated(signinUsername, signinPassword)) {
         currUser.username = signinUsername;
         currUser.password = signinPassword;
         localStorage.setItem('currUser', JSON.stringify(currUser));
         location.hash = '#feed';
-        console.log(`Signed in correctly as ${signinUsername}:${signinPassword}`);
       } else {
-        alert('The username or password is incorrect. Try again.');
-        console.log('The username or password is incorrect. Try again.');
+        document.getElementById("loginAlert").style.display = "block";
         this.form.reset();
       }
-
-
-      // this.form.submit();
     });
   }
 }
@@ -47,7 +39,6 @@ window.addEventListener('load', () => {
 
 const loginInit = () => {
   const form = document.getElementById('authForm');
-  // console.log(form);
   if (form) {
     const fields = ['username', 'password'];
     const validator = new Login(form, fields);
@@ -62,7 +53,6 @@ export const signout = () => {
 }
 
 export function isUserAuthenticated(username, password) {
-  // console.log(username, password);
   return !!(JSON.parse(localStorage.getItem('users')) || [])
     .find(user => user.username === username && user.password === password);
 }
